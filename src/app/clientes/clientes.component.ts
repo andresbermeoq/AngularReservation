@@ -25,8 +25,8 @@ export class ClientesComponent implements OnInit {
     }
 
     this.clientsService.saveClient(this.client)
-    .subscribe( resp => {
-        console.log(resp);
+    .subscribe( (resp: any) => {
+        console.log("Respuesta: ", resp);
       });
 
   }
