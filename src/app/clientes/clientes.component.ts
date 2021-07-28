@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ClientModel } from '../models/client.model';
+import { ClientesService } from '../services/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor() { }
+  client: ClientModel = new ClientModel();
+
+  constructor( private clientsService: ClientesService) { }
 
   ngOnInit(): void {
+  }
+
+  saveClient( form: NgForm ) {
+
+    if( form.invalid ) {
+      console.log('Formulario No Valido');
+      return;
+    }
+
+    this.clientsService.saveClient(this.client)
+    .subscribe( resp => {
+        console.log(resp);
+      });
+
   }
 
 }

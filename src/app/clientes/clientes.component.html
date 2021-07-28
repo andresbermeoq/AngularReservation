@@ -1,45 +1,55 @@
 <br>
 
-<div class="container">
-     <div class="card" style="width: 18rem;">
+<div class="container border border-dark justify-content-center">
+     <div class="card border border-5 rounded-3 shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
           <h5 class="card-header">Registro de Clientes</h5>
 
-          <div class="card-body">
-               <h5 class="card-title">Cedula</h5>
-               <div class="col-auto">
-                    <label for="inputPassword2" class="visually-hidden">Cedula</label>
-                    <input type="text" class="form-control" id="inputPassword2" placeholder="Cedula">
-               </div>
-               <h5 class="card-title">Nombre</h5>
-               <div class="col-auto">
-                    <label for="inputName" class="visually-hidden">Nombre</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Nombre">
-               </div>
-               <h5 class="card-title">Apellido</h5>
-               <div class="col-auto">
-                    <label for="inputLastName" class="visually-hidden">Apellido</label>
-                    <input type="text" class="form-control" id="inputLastName" placeholder="Apellido">
-               </div>
-               <h5 class="card-title">Direccion</h5>
-               <div class="col-auto">
-                    <label for="inputAddress" class="visually-hidden">Direccion</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Direccion">
-               </div>
-               <h5 class="card-title">Telefono</h5>
-               <div class="col-auto">
-                    <label for="inputPhone" class="visually-hidden">Telefono</label>
-                    <input type="text" class="form-control" id="inputPhone" placeholder="Telefono">
-               </div>
-               <h5 class="card-title">Email</h5>
-               <div class="col-auto">
-                    <label for="inputEmail" class="visually-hidden">Email</label>
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-               </div>
-          </div>
+          <form (ngSubmit)="saveClient(f)"
+                    #f="ngForm">
 
-          <div class="container">
-               <button type="submit" class="btn btn-primary mb-3">Registrar Usuario</button>
-          </div>
+               <div class="card-body">
+                    <h5 class="card-title">Cedula</h5>
+                    <div class="col-auto">
+                         <label for="inputPassword2" class="visually-hidden">Cedula</label>
+                         <input type="text" class="form-control" id="inputPassword2" placeholder="Cedula"
+                                   [(ngModel)]="client.idCard" name="idCard" required>
+                    </div>
+                    <h5 class="card-title">Nombre</h5>
+                    <div class="col-auto">
+                         <label for="inputName" class="visually-hidden">Nombre</label>
+                         <input type="text" class="form-control" id="inputName" placeholder="Nombre"
+                                   [(ngModel)]="client.name" name="name">
+                    </div>
+                    <h5 class="card-title">Apellido</h5>
+                    <div class="col-auto">
+                         <label for="inputLastName" class="visually-hidden">Apellido</label>
+                         <input type="text" class="form-control" id="inputLastName" placeholder="Apellido"
+                                   [(ngModel)]="client.lastName" name="lastName">
+                    </div>
+                    <h5 class="card-title">Direccion</h5>
+                    <div class="col-auto">
+                         <label for="inputAddress" class="visually-hidden">Direccion</label>
+                         <input type="text" class="form-control" id="inputAddress" placeholder="Direccion"
+                                   [(ngModel)]="client.address" name="address">
+                    </div>
+                    <h5 class="card-title">Telefono</h5>
+                    <div class="col-auto">
+                         <label for="inputPhone" class="visually-hidden">Telefono</label>
+                         <input type="text" class="form-control" id="inputPhone" placeholder="Telefono"
+                                   [(ngModel)]="client.phone" name="phone">
+                    </div>
+                    <h5 class="card-title">Email</h5>
+                    <div class="col-auto">
+                         <label for="inputEmail" class="visually-hidden">Email</label>
+                         <input type="text" class="form-control" id="inputEmail" placeholder="Email"
+                                   [(ngModel)]="client.email" name="email">
+                    </div>
+               </div>
+
+               <div class="container">
+                    <button type="submit" class="btn btn-primary mb-3">Registrar Usuario</button>
+               </div>
+          </form>
 
 
      </div>
