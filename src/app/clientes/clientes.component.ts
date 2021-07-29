@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 import { ClientModel } from '../models/client.model';
 import { ClientesService } from '../services/clientes.service';
 
+import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -24,11 +27,26 @@ export class ClientesComponent implements OnInit {
       return;
     }
 
-    this.clientsService.saveClient(this.client)
-    .subscribe( (resp: any) => {
-        console.log("Respuesta: ", resp);
-      });
+    Swal.fire({
+      title: 'Hola',
+      text: 'Esperando Informacion',
+      allowOutsideClick: false
+    });
 
+    Swal.showLoading();
+
+    let petition: Observable<any>;
+
+    petition = this.clientsService.saveClient(this.client);
+
+    petition.subscribe
+    ( (resp: any) => {
+        Swal.fire({
+          title: 'Registro de Usuario',
+          text: 'Usuario Registrado Correctamente',
+          icon: 'success'
+        })
+      });
   }
 
 }

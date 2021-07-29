@@ -1,0 +1,60 @@
+<app-inicio></app-inicio>
+
+<br>
+
+<div class="container d-flex justify-content-center justify-content-center">
+     <div class="card border border-5 rounded-3 shadow-lg p-3 mb-5 bg-body rounded" style="width: 30rem;">
+          <h2 class="card-header">Registro de Restaurantes</h2>
+
+          <form (ngSubmit)="saveRestaurant(f)"
+               #f="ngForm">
+
+               <div class="card-body">
+                    <h5 class="card-title">Nombre</h5>
+                    <div class="col-auto">
+                         <label for="inputName" class="visually-hidden">Nombre</label>
+                         <input type="text" class="form-control" id="inputName" placeholder="Nombre"
+                              [(ngModel)]="restaurant.name" name="name">
+                    </div>
+
+                    <br>
+
+                    <h5 class="card-title">Direccion</h5>
+                    <div class="col-auto">
+                         <label for="inputAddress" class="visually-hidden">Direccion</label>
+                         <input type="text" class="form-control" id="inputAddress" placeholder="Direccion"
+                              [(ngModel)]="restaurant.address" name="address">
+                    </div>
+
+                    <br>
+
+                    <h5 class="card-title">Telefono</h5>
+                    <div class="col-auto">
+                         <label for="inputPhone" class="visually-hidden">Telefono</label>
+                         <input type="text" class="form-control" id="inputPhone" placeholder="Telefono"
+                              [(ngModel)]="restaurant.phone" name="phone">
+                    </div>
+
+                    <br>
+
+                    <h5 class="card-title">Numero de Aforo</h5>
+                    <div class="col-auto">
+                         <label for="inputNumberCapacity" class="visually-hidden">Numero de Aforo</label>
+                         <input type="text" class="form-control" id="inputNumberCapacity" placeholder="Numero de Aforo"
+                              [(ngModel)]="restaurant.capacityNumber" name="capacityNumber">
+                    </div>
+               </div>
+
+               <br>
+
+               <div class="container d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary mb-3">
+                         <p class="h4">Registrar</p>
+                    </button>
+               </div>
+
+          </form>
+
+     </div>
+
+</div>

@@ -1,8 +1,10 @@
+<app-inicio></app-inicio>
+
 <br>
 
-<div class="container border border-dark justify-content-center">
-     <div class="card border border-5 rounded-3 shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
-          <h5 class="card-header">Registro de Clientes</h5>
+<div class="container d-flex justify-content-center justify-content-center">
+     <div class="card border border-5 rounded-3 shadow-lg p-3 mb-5 bg-body rounded" style="width: 25rem;">
+          <h2 class="card-header">Registro de Clientes</h2>
 
           <form (ngSubmit)="saveClient(f)"
                     #f="ngForm">
@@ -14,30 +16,35 @@
                          <input type="text" class="form-control" id="inputPassword2" placeholder="Cedula"
                                    [(ngModel)]="client.idCard" name="idCard" required>
                     </div>
+                    <br>
                     <h5 class="card-title">Nombre</h5>
                     <div class="col-auto">
                          <label for="inputName" class="visually-hidden">Nombre</label>
                          <input type="text" class="form-control" id="inputName" placeholder="Nombre"
                                    [(ngModel)]="client.name" name="name">
                     </div>
+                    <br>
                     <h5 class="card-title">Apellido</h5>
                     <div class="col-auto">
                          <label for="inputLastName" class="visually-hidden">Apellido</label>
                          <input type="text" class="form-control" id="inputLastName" placeholder="Apellido"
                                    [(ngModel)]="client.lastName" name="lastName">
                     </div>
+                    <br>
                     <h5 class="card-title">Direccion</h5>
                     <div class="col-auto">
                          <label for="inputAddress" class="visually-hidden">Direccion</label>
                          <input type="text" class="form-control" id="inputAddress" placeholder="Direccion"
                                    [(ngModel)]="client.address" name="address">
                     </div>
+                    <br>
                     <h5 class="card-title">Telefono</h5>
                     <div class="col-auto">
                          <label for="inputPhone" class="visually-hidden">Telefono</label>
                          <input type="text" class="form-control" id="inputPhone" placeholder="Telefono"
                                    [(ngModel)]="client.phone" name="phone">
                     </div>
+                    <br>
                     <h5 class="card-title">Email</h5>
                     <div class="col-auto">
                          <label for="inputEmail" class="visually-hidden">Email</label>
@@ -46,8 +53,12 @@
                     </div>
                </div>
 
-               <div class="container">
-                    <button type="submit" class="btn btn-primary mb-3">Registrar Usuario</button>
+               <br>
+
+               <div class="container d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary mb-3">
+                         <p class="h4">Registrar</p>
+                    </button>
                </div>
           </form>
 

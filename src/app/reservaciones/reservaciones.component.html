@@ -1,0 +1,67 @@
+<app-inicio></app-inicio>
+
+<br>
+
+
+<div class="container border border-dark justify-content-center">
+     <div class="card border border-5 rounded-3 shadow-lg p-3 mb-5 bg-body rounded" style="width: 30rem;">
+          <h2 class="card-header">Registro de Reservacion</h2>
+
+          <form class="needs-validation" [formGroup]="formClient" (ngSubmit)="saveReservation()">
+
+               <div class="card-body">
+                    <h5 class="card-title">Cliente</h5>
+                    <div class="col-auto">
+                         <label for="inputClient" class="visually-hidden">Cliente</label>
+                         <input #client (keyup)="searchClient(client.value)"
+                                        type="text"
+                                        class="form-control"
+                                        id="inputClient"
+                                        placeholder="Cliente"
+                                        formControlName="idCard"
+                                        [class.is-invalid]="idCardInvalid">
+                         <small *ngIf="idCardInvalid" class="invalid-feedback text-danger">
+                              {{messageError}}
+                         </small>
+                    </div>
+                    <br>
+                    <h5 class="card-title">Restaurante</h5>
+                    <div class="col-auto">
+                         <label for="inputNumberCapacity" class="visually-hidden">Restaurante</label>
+                         <select class="form-select" id="inputNumberCapacity" placeholder="Restaurante"
+                                   formControlName="restaurant" *ngIf="!idCardInvalid">
+                                   <option *ngFor="let restaurant of restaurants" [value]="restaurant.id">{{restaurant.name}}</option>
+                         </select>
+                    </div>
+                    <br>
+                    <h5 class="card-title">Numero de Aforo</h5>
+                    <div class="col-auto">
+                         <label for="inputNumberCapacity" class="visually-hidden">Numero de Aforo</label>
+                         <input type="text" class="form-control" id="inputNumberCapacity" placeholder="Numero de Aforo"
+                                   formControlName="numberCapacity">
+                    </div>
+                    <br>
+                    <h5 class="card-title">Fecha</h5>
+                    <div class="col-auto">
+                         <label for="inputDate" class="visually-hidden">Fecha</label>
+                         <input type="date" class="form-control" id="inputDate" placeholder="Fecha"
+                                   formControlName="date">
+                    </div>
+                    <br>
+                    <h5 class="card-title">Hora</h5>
+                    <div class="col-auto">
+                         <label for="inputHour" class="visually-hidden">Hora</label>
+                         <input type="time" class="form-control" id="inputHour" placeholder="Hora"
+                                   formControlName="hour">
+                    </div>
+               </div>
+
+               <div class="container d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary mb-3">
+                         <p class="h4">Registrar</p>
+                    </button>
+               </div>
+
+          </form>
+     </div>
+</div>

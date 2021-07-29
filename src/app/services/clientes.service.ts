@@ -12,4 +12,8 @@ export class ClientesService {
   saveClient( client: ClientModel) {
     return this.http.post(`${this.url}/crear`, client);
   }
+
+  getClientbyIdCard(idCard: String) {
+    return this.http.get(`${this.url}/buscarCedula?idCard=${idCard}`)
+  }
 }
