@@ -1,9 +1,14 @@
 
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ReservationModel } from '../models/reservation.model';
 import { ClientesService } from '../services/clientes.service';
+import { ReservacionesService } from '../services/reservaciones.service';
 import { RestaurantesService } from '../services/restaurantes.service';
+
+import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,12 +20,14 @@ export class ReservacionesComponent implements OnInit {
 
   formClient!: FormGroup;
 
+  reservation: ReservationModel = new ReservationModel();
+
   error: boolean = false;
   messageError!: string;
 
   restaurants = new Array;
 
-  constructor( private restaurantService: RestaurantesService, private clientService: ClientesService, private fb: FormBuilder) {
+  constructor( private restaurantService: RestaurantesService, private clientService: ClientesService, private fb: FormBuilder, private reservationService: ReservacionesService) {
     this.createFormReservation();
     this.listRestaurants();
   }
@@ -35,7 +42,7 @@ export class ReservacionesComponent implements OnInit {
         this.formClient.enable();
       }, (err: any) => {
         this.error = true;
-        this.messageError = `Usuario No Encontrado`;
+        this.messageError = `Usuario No Encontrado, Registrarse`;
       });
   }
 
@@ -71,7 +78,45 @@ export class ReservacionesComponent implements OnInit {
   }
 
   saveReservation() {
-    console.log(this.formClient);
+    if (this.formClient.invalid) {
+      console.log('Formulario No Valido');
+      return;
+    }
+    let body = new URLSearchParams();
+
+    body.set("fecha", this.formClient.controls['date'].value);
+    body.set("hora", this.formClient.controls['hour'].value);
+    body.set("capacidad", this.formClient.controls['numberCapacity'].value)
+    body.set("cedula", this.formClient.controls['idCard'].value)
+    body.set("restaurante", this.formClient.controls['restaurant'].value);
+
+    Swal.fire({
+      title: 'Error',
+      text: 'Ocupado',
+      icon: 'error',
+      timer: 10000,
+      showConfirmButton: true
+    });
+    Swal.showLoading();
+
+    let petition: Observable<any>;
+
+    petition = this.reservationService.saveReservacion(body);
+
+    petition.subscribe((resp: any) => {
+      Swal.fire({
+        title: 'Registro de Reservacion',
+        text: 'Reservacion Registrada Correctamente',
+        icon: 'success'
+      })
+    }, (err) => {
+      Swal.fire({
+        title: 'Error',
+        text: 'Ocupado',
+        icon: 'error'
+      })
+      this.formClient.reset();
+    });
   }
 
 }
