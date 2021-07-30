@@ -11,6 +11,8 @@ import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { RestaurantesService } from './services/restaurantes.service';
 import { InicioComponent } from './inicio/inicio.component';
 import { ReservacionesComponent } from './reservaciones/reservaciones.component';
+import { ListaReservasClientesComponent } from './lista-reservas-clientes/lista-reservas-clientes.component';
+import { ListaReservasRestaurantesComponent } from './lista-reservas-restaurantes/lista-reservas-restaurantes.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ReservacionesComponent } from './reservaciones/reservaciones.component'
     RestaurantesComponent,
     InicioComponent,
     ReservacionesComponent,
+    ListaReservasClientesComponent,
+    ListaReservasRestaurantesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,46 @@
+<app-inicio></app-inicio>
+
+<br>
+
+<div class="container">
+     <div>
+          <form [formGroup]="formClients" (ngSubmit)="searchClients()">
+               <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupFile01">Cliente</label>
+                    <input type="text" class="form-control" id="inputDate" formControlName="idCard">
+                    <button class="btn btn-info">Buscar</button>
+               </div>
+               <div style="margin-left: 50px; margin-block-start: 20px; margin-right:150px;">
+                    <table class="table table-bordered border-primary">
+                        <thead class="table-light">
+                            <th>
+                              <p class="h3">Nombres</p>
+                            </th>
+                            <th>
+                              <p class="h3">Hora</p>
+                            </th>
+                            <th>
+                              <p class="h3">Cliente</p>
+                            </th>
+                        </thead>
+                        <tbody>
+                         <tr *ngFor="let res of clients">
+                              <td>
+                                   <p class="h5">{{res.name}}</p>
+                              </td>
+                              <td>
+                                   <p class="h5">{{res.date}}</p>
+                              </td>
+                              <td>
+                                   <p class="h5">{{res.hour}}</p>
+                              </td>
+                         </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+          </form>
+     </div>
+
+</div>
+

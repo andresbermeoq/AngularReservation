@@ -1,7 +1,6 @@
 
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationModel } from '../models/reservation.model';
 import { ClientesService } from '../services/clientes.service';
 import { ReservacionesService } from '../services/reservaciones.service';
@@ -68,8 +67,8 @@ export class ReservacionesComponent implements OnInit {
       idCard: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)] ],
       restaurant: ['', [Validators.required]],
       numberCapacity: ['', [Validators.required]],
-      date: [''],
-      hour: ['']
+      date: ['', [Validators.required]],
+      hour: ['', [Validators.required]]
     });
   }
 

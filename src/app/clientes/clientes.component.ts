@@ -20,17 +20,54 @@ export class ClientesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  validateIdCard(cedula: String) {
+    let cedulaCorrecta = false;
+    if (cedula.length == 10) {
+      let tercerDigito = parseInt(cedula.substring(2, 3));
+      if (tercerDigito < 6) {
+        // El ultimo digito se lo considera dígito verificador
+        let coefValCedula = [2, 1, 2, 1, 2, 1, 2, 1, 2];
+        let verificador = parseInt(cedula.substring(9, 10));
+        let suma: number = 0;
+        let digito: number = 0;
+        for (let i = 0; i < (cedula.length - 1); i++) {
+          digito = parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
+          suma += ((parseInt((digito % 10) + '') + (parseInt((digito / 10) + ''))));
+        }
+        suma = Math.round(suma);
+        if ((Math.round(suma % 10) == 0) && (Math.round(suma % 10) == verificador)) {
+          cedulaCorrecta = true;
+        } else if ((10 - (Math.round(suma % 10))) == verificador) {
+          cedulaCorrecta = true;
+        } else {
+          cedulaCorrecta = false;
+        }
+      } else {
+        cedulaCorrecta = false;
+      }
+    } else {
+      cedulaCorrecta = false;
+    }
+    return cedulaCorrecta;
+  }
+
   saveClient( form: NgForm ) {
 
     if( form.invalid ) {
-      console.log('Formulario No Valido');
+      Swal.fire({
+        title: 'Registro de Usuario',
+        text: 'Formulario Invalido',
+        icon: 'error'
+      })
       return;
     }
 
     Swal.fire({
-      title: 'Hola',
-      text: 'Esperando Informacion',
-      allowOutsideClick: false
+      title: 'Error',
+      text: 'Usuario con la Cedula ya existe',
+      icon: 'error',
+      timer: 10000,
+      showConfirmButton: true
     });
 
     Swal.showLoading();
@@ -46,6 +83,13 @@ export class ClientesComponent implements OnInit {
           text: 'Usuario Registrado Correctamente',
           icon: 'success'
         })
+      }, (err : any) => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Usuario con la Cedula ya existe',
+          icon: 'error'
+        })
+        form.reset();
       });
   }
 

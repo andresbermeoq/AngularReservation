@@ -14,7 +14,7 @@
                     <div class="col-auto">
                          <label for="inputName" class="visually-hidden">Nombre</label>
                          <input type="text" class="form-control" id="inputName" placeholder="Nombre"
-                              [(ngModel)]="restaurant.name" name="name">
+                              [(ngModel)]="restaurant.name" name="name" required>
                     </div>
 
                     <br>
@@ -23,7 +23,7 @@
                     <div class="col-auto">
                          <label for="inputAddress" class="visually-hidden">Direccion</label>
                          <input type="text" class="form-control" id="inputAddress" placeholder="Direccion"
-                              [(ngModel)]="restaurant.address" name="address">
+                              [(ngModel)]="restaurant.address" name="address" required>
                     </div>
 
                     <br>
@@ -32,7 +32,7 @@
                     <div class="col-auto">
                          <label for="inputPhone" class="visually-hidden">Telefono</label>
                          <input type="text" class="form-control" id="inputPhone" placeholder="Telefono"
-                              [(ngModel)]="restaurant.phone" name="phone">
+                              [(ngModel)]="restaurant.phone" name="phone" required>
                     </div>
 
                     <br>
@@ -41,7 +41,7 @@
                     <div class="col-auto">
                          <label for="inputNumberCapacity" class="visually-hidden">Numero de Aforo</label>
                          <input type="text" class="form-control" id="inputNumberCapacity" placeholder="Numero de Aforo"
-                              [(ngModel)]="restaurant.capacityNumber" name="capacityNumber">
+                              [(ngModel)]="restaurant.capacityNumber" name="capacityNumber" required>
                     </div>
                </div>
 
@@ -51,7 +51,12 @@
                     <button type="submit" class="btn btn-primary mb-3">
                          <p class="h4">Registrar</p>
                     </button>
+                    &nbsp;
+                    <a class="btn btn-primary mb-3" routerLink="/listaRestaurantes">
+                         <p class="h4">Listado</p>
+                    </a>
                </div>
+
 
           </form>
 

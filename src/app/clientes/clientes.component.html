@@ -14,42 +14,47 @@
                     <div class="col-auto">
                          <label for="inputPassword2" class="visually-hidden">Cedula</label>
                          <input type="text" class="form-control" id="inputPassword2" placeholder="Cedula"
-                                   [(ngModel)]="client.idCard" name="idCard" required>
+                                   [(ngModel)]="client.idCard" name="idCard"
+                                   #idCard (keyup)="validateIdCard(idCard.value)"
+                                   [class.is-invalid]="!validateIdCard(idCard.value)" required>
                     </div>
                     <br>
                     <h5 class="card-title">Nombre</h5>
                     <div class="col-auto">
                          <label for="inputName" class="visually-hidden">Nombre</label>
                          <input type="text" class="form-control" id="inputName" placeholder="Nombre"
-                                   [(ngModel)]="client.name" name="name">
+                                   [(ngModel)]="client.name" name="name" required>
                     </div>
                     <br>
                     <h5 class="card-title">Apellido</h5>
                     <div class="col-auto">
                          <label for="inputLastName" class="visually-hidden">Apellido</label>
                          <input type="text" class="form-control" id="inputLastName" placeholder="Apellido"
-                                   [(ngModel)]="client.lastName" name="lastName">
+                                   [(ngModel)]="client.lastName" name="lastName" required>
                     </div>
                     <br>
                     <h5 class="card-title">Direccion</h5>
                     <div class="col-auto">
                          <label for="inputAddress" class="visually-hidden">Direccion</label>
                          <input type="text" class="form-control" id="inputAddress" placeholder="Direccion"
-                                   [(ngModel)]="client.address" name="address">
+                                   [(ngModel)]="client.address" name="address" required>
                     </div>
                     <br>
                     <h5 class="card-title">Telefono</h5>
                     <div class="col-auto">
                          <label for="inputPhone" class="visually-hidden">Telefono</label>
                          <input type="text" class="form-control" id="inputPhone" placeholder="Telefono"
-                                   [(ngModel)]="client.phone" name="phone">
+                                   [(ngModel)]="client.phone" name="phone" required>
                     </div>
                     <br>
                     <h5 class="card-title">Email</h5>
                     <div class="col-auto">
                          <label for="inputEmail" class="visually-hidden">Email</label>
                          <input type="text" class="form-control" id="inputEmail" placeholder="Email"
-                                   [(ngModel)]="client.email" name="email">
+                                   [(ngModel)]="client.email" name="email"
+                                   [class.is-invalid]="correo.invalid && correo.touched"
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+                                   #correo = "ngModel">
                     </div>
                </div>
 
@@ -59,7 +64,12 @@
                     <button type="submit" class="btn btn-primary mb-3">
                          <p class="h4">Registrar</p>
                     </button>
+                    &nbsp;
+                    <a class="btn btn-primary mb-3" routerLink="/listaClientes">
+                         <p class="h4">Listado</p>
+                    </a>
                </div>
+
           </form>
 
 

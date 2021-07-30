@@ -17,4 +17,16 @@ export class ReservacionesService {
     }
     return this.http.post(`${this.url}/crear`, body, httpOptions);
   }
+
+  listAllReservations() {
+    return this.http.get(`${this.url}/listar`);
+  }
+
+  getClientsReservations(idCard: String) {
+    return this.http.get(`${this.url}/listarClients?idCard=${idCard}`)
+  }
+
+  getRestaurantsReservations(name: String, date: String) {
+    return this.http.get(`${this.url}/listarRestaurants?date=${date}&name=${name}`)
+  }
 }
